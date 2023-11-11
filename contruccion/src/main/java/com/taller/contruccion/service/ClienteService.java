@@ -12,6 +12,4 @@ public class ClienteService {
     @Autowired
     public ClienteService(DaoCliente clienteDao) {daoCliente = clienteDao;}
 
-
-
 }
