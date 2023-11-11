@@ -1,6 +1,6 @@
 package com.taller.contruccion.controller;
 
-import com.taller.contruccion.service.ClienteService;
+import com.taller.contruccion.service.PlanEntrenamientoService;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
