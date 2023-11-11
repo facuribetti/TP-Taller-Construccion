@@ -1,12 +1,11 @@
 package com.taller.contruccion.dao;
 
-import com.taller.contruccion.entity.Cliente;
+import com.taller.contruccion.entity.PlanEntrenamiento;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-//FALTA EXTENDS!!!
-public interface DaoPlanEntrenamiento {
+public interface DaoPlanEntrenamiento extends JpaRepository<PlanEntrenamiento, Integer>{
 
 
 
