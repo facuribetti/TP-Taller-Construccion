@@ -30,5 +30,73 @@ public class Cliente {
 
     //@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     //private List<PlanDeEntrenamiento> planesDeEntrenamiento;
+    public Cliente(){}
 
+    public Cliente(String apellido, long dni, String email, String nombre, String password) {
+        this.apellido = apellido;
+        this.dni = dni;
+        this.email = email;
+        this.nombre = nombre;
+        this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public long getDni() {
+        return dni;
+    }
+
+    public void setDni(long dni) {
+        this.dni = dni;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Cliente{" +
+                "id=" + id +
+                ", apellido='" + apellido + '\'' +
+                ", dni=" + dni +
+                ", email='" + email + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
