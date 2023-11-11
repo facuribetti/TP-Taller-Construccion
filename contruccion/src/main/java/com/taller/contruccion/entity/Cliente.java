@@ -33,6 +33,7 @@ public class Cliente {
     public Cliente(){}
 
     public Cliente(String apellido, long dni, String email, String nombre, String password) {
+        //El id no va en el constructor porque sino explota todo
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
