@@ -12,6 +12,7 @@ public class Cliente {
     @Column(name = "apellido")
     private String apellido;
 
+    //PORQUE ESTE NO ES UNIQUE TAMBIEN? A QUE SE REFIERE CON UNIQUE?
     @Column(name = "dni")
     private long dni;
 
