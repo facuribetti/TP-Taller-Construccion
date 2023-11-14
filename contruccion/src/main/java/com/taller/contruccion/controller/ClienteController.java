@@ -3,11 +3,13 @@ package com.taller.contruccion.controller;
 
 import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.service.ClienteService;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/Cliente")
 public class ClienteController {
 
@@ -16,13 +18,22 @@ public class ClienteController {
     public ClienteController(ClienteService serviceCliente) {clienteService = serviceCliente;}
 
     @GetMapping("/{id}")
-    public Cliente obtenerClientePorId(@PathVariable int id) {
-        return clienteService.encontrarPorId(id);
+    public String obtenerClientePorId(@PathVariable int id, Model model) {
+
+        Cliente cliente = clienteService.encontrarPorId(id);
+        System.out.println(cliente);
+
+        model.addAttribute("cliente", cliente);
+        //return clienteService.encontrarPorId(id);
+
+        return "cliente/show-client";
     }
 
     @PostMapping("/crearCliente")
-    public void crearCliente(@RequestBody Cliente cliente) {
+    public String crearCliente(@ModelAttribute("cliente") Cliente cliente) {
         clienteService.crearCliente(cliente);
+
+        return "redirect:/Cliente" + cliente.getId();
     }
 
 }

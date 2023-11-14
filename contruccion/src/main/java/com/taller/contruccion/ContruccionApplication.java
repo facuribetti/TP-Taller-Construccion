@@ -1,5 +1,7 @@
 package com.taller.contruccion;
 
+import com.taller.contruccion.entity.Cliente;
+import com.taller.contruccion.service.ClienteService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +15,15 @@ public class ContruccionApplication {
     }
 
     @Bean
-    CommandLineRunner commandLineRunner() {
+    CommandLineRunner commandLineRunner(ClienteService clienteService) {
         return runner -> {
             System.out.println("hello");
+            cargarUnCliente(clienteService);
         };
+    }
+
+    private void cargarUnCliente(ClienteService clienteService) {
+        Cliente cliente = new Cliente("alberto",123,"user@user.com","arias","123");
+        clienteService.crearCliente(cliente);
     }
 }

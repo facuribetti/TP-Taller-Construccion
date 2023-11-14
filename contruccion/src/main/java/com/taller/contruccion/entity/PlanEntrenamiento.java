@@ -8,19 +8,25 @@ import jakarta.persistence.*;
 public class PlanEntrenamiento {
 
     //ESTO NO FORMA PARTE DE LOS ATRIBUTOS DEL PLAN DE ENTRENAMIENTO, LO DEJO IGUAL?
-
+/*
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private int id;
+*/
     @Column(name = "cant_repeticiones")
     private int cantRepeticiones;
 
     @Column(name = "dia_semana")
     private int diaSemana;
 
-    @Column(name = "ejercicio")
-    private Ejercicio ejercicio;
+    //@Column(name = "ejercicio")
+    //private Ejercicio ejercicio;
 
     // ESTE ID PLAN NO DEBERIA SER COMO EL @ID QUE HAY EN LA CLASE CLIENTE?
     //NO ES UNA CLAVE PRIMARIA EN LA BD?
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_plan")
     private int idPlan;
 
@@ -37,10 +43,10 @@ public class PlanEntrenamiento {
     }
 
     //EL IDPLAN NO VA EN ESTE CONSTRUCTOR? COMO PASA EN CLIENTE
-    public PlanEntrenamiento(int cantRepeticiones, int diaSemana, Ejercicio ejercicio, int idPlan) {
+    public PlanEntrenamiento(int cantRepeticiones, int diaSemana, int idPlan) {
         this.cantRepeticiones = cantRepeticiones;
         this.diaSemana = diaSemana;
-        this.ejercicio = ejercicio;
+        //this.ejercicio = ejercicio;
         this.idPlan = idPlan;
     }
 
@@ -59,7 +65,7 @@ public class PlanEntrenamiento {
     public void setDiaSemana(int diaSemana) {
         this.diaSemana = diaSemana;
     }
-
+/*
     public Ejercicio getEjercicio() {
         return ejercicio;
     }
@@ -67,7 +73,7 @@ public class PlanEntrenamiento {
     public void setEjercicio(Ejercicio ejercicio) {
         this.ejercicio = ejercicio;
     }
-
+*/
     public int getIdPlan() {
         return idPlan;
     }
