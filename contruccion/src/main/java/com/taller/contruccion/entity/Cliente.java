@@ -25,9 +25,9 @@ public class Cliente {
     @Column(name = "password")
     private String password;
 
-    //@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    //JoinColumn(name = "shopping_cart_id")
-    //private PlanDeEntrenamiento planDeEntrenamiento;
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "plan_entrenamiento_id")
+    private PlanEntrenamiento planEntrenamiento;
 
     //@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
     //private List<PlanDeEntrenamiento> planesDeEntrenamiento;

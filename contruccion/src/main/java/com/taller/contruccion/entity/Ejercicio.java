@@ -10,6 +10,10 @@ public class Ejercicio {
     @Column(name = "id")
     private int id;
 
+    @ManyToOne
+    @JoinColumn(name = "plan_entrenamiento_id")
+    private PlanEntrenamiento planEntrenamiento;
+
     public Ejercicio() {
 
     }

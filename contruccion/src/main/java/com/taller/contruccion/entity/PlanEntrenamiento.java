@@ -2,6 +2,8 @@ package com.taller.contruccion.entity;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 @Table(name = "plan_entrenamiento")
 
@@ -21,7 +23,8 @@ public class PlanEntrenamiento {
     private int diaSemana;
 
     //@Column(name = "ejercicio")
-    //private Ejercicio ejercicio;
+    @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ejercicio> listaEjercicios;
 
     // ESTE ID PLAN NO DEBERIA SER COMO EL @ID QUE HAY EN LA CLASE CLIENTE?
     //NO ES UNA CLAVE PRIMARIA EN LA BD?

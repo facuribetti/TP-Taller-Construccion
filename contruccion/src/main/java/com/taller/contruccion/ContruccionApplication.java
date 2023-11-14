@@ -23,7 +23,7 @@ public class ContruccionApplication {
     }
 
     private void cargarUnCliente(ClienteService clienteService) {
-        Cliente cliente = new Cliente("alberto",123,"user@user.com","arias","123");
+        Cliente cliente = new Cliente("arias",123,"user@user.com","alberto","123");
         clienteService.crearCliente(cliente);
     }
 }
