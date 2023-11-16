@@ -9,27 +9,16 @@ import java.util.List;
 
 public class PlanEntrenamiento {
 
-    //ESTO NO FORMA PARTE DE LOS ATRIBUTOS DEL PLAN DE ENTRENAMIENTO, LO DEJO IGUAL?
-/*
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
-*/
-
-    @Column(name = "dia_semana")
-    private int diaSemana;
-
-    //@Column(name = "ejercicio")
-    @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Ejercicio> listaEjercicios;
-
-    // ESTE ID PLAN NO DEBERIA SER COMO EL @ID QUE HAY EN LA CLASE CLIENTE?
-    //NO ES UNA CLAVE PRIMARIA EN LA BD?
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_plan")
     private int id_plan;
+
+    @Column(name = "dia_semana")
+    private int diaSemana;
+
+    @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Ejercicio> listaEjercicios;
 
     //POR AHORA DEJO LOS METODOS DE ESTA CLASE COMO PRIVATE!!!!
     private void agregarNuevoEjercicio(){
@@ -46,7 +35,6 @@ public class PlanEntrenamiento {
     //EL IDPLAN NO VA EN ESTE CONSTRUCTOR? COMO PASA EN CLIENTE
     public PlanEntrenamiento(int diaSemana, int id_plan) {
         this.diaSemana = diaSemana;
-        //this.ejercicio = ejercicio;
         this.id_plan = id_plan;
     }
 

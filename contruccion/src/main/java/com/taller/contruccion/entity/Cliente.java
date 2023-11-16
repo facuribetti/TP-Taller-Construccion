@@ -2,11 +2,11 @@ package com.taller.contruccion.entity;
 
 import jakarta.persistence.*;
 @Entity
-@Table(name = "users")
+@Table(name = "cliente")
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @Column(name = "id_cliente")
     private int id_cliente;
 
     @Column(name = "apellido")
@@ -16,7 +16,7 @@ public class Cliente {
     @Column(name = "dni")
     private long dni;
 
-    @Column(name = "email", unique = true)
+    @Column(name = "email")
     private String email;
 
     @Column(name = "nombre")
@@ -26,7 +26,7 @@ public class Cliente {
     private String contrasenia;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinColumn(name = "plan_entrenamiento_id")
+    @JoinColumn(name = "id_plan")
     private PlanEntrenamiento planEntrenamiento;
 
     //@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)

@@ -20,7 +20,7 @@ public class Ejercicio {
     private int cantRepeticiones;
 
     @ManyToOne
-    @JoinColumn(name = "plan_entrenamiento_id")
+    @JoinColumn(name = "id_plan")
     private PlanEntrenamiento planEntrenamiento;
 
 
