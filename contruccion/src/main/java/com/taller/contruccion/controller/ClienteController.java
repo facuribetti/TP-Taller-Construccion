@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @Controller
 @RequestMapping("/Cliente")
 public class ClienteController {
@@ -29,11 +27,21 @@ public class ClienteController {
         return "cliente/show-client";
     }
 
-    @PostMapping("/crearCliente")
-    public String crearCliente(@ModelAttribute("cliente") Cliente cliente) {
+    @GetMapping("/crearCliente")
+    public String crearCliente(Model model){
+        Cliente cliente = new Cliente();
+
+        model.addAttribute(cliente);
+        return "cliente/nuevo-cliente";
+
+    }
+
+    @PostMapping("/guardarCliente")
+    public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
+        System.out.println(cliente);
         clienteService.crearCliente(cliente);
 
-        return "redirect:/Cliente" + cliente.getId();
+        return "redirect:/Cliente/" + cliente.getId_cliente();
     }
 
 }

@@ -8,16 +8,16 @@
 <h2>Nuevo Cliente</h2>
 
 <form th:action="@{/Cliente/guardarCliente}" th:object="${cliente}" method="post">
-  <label for="nombre">Nombre:</label>
+  <label >Nombre:</label>
   <input type="text" th:field="*{nombre}" />
 
-  <label for="apellido">Apellido:</label>
+  <label >Apellido:</label>
   <input type="text" th:field="*{apellido}" />
 
-  <label for="dni">DNI:</label>
-  <input type="text" th:field="*{dni}" />
+  <label >DNI:</label>
+  <input type="number" th:field="*{dni}" />
 
-  <label for="email">Email:</label>
+  <label >Email:</label>
   <input type="text" th:field="*{email}" />
 
   <input type="submit" value="Guardar" />

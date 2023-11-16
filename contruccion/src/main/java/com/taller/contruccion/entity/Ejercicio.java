@@ -7,14 +7,17 @@ import jakarta.persistence.*;
 public class Ejercicio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private int id;
+    @Column(name = "id_ejercicio")
+    private int id_ejercicio;
 
     @Column(name = "nombre")
     private String nombre;
 
     @Column(name = "descripcion")
     private String descripcion;
+
+    @Column(name = "cant_repeticiones")
+    private int cantRepeticiones;
 
     @ManyToOne
     @JoinColumn(name = "plan_entrenamiento_id")
@@ -23,18 +26,27 @@ public class Ejercicio {
 
     public Ejercicio() {}
 
-    public Ejercicio(String nombre, String descripcion, PlanEntrenamiento planEntrenamiento) {
+    public Ejercicio(String nombre, String descripcion, int cantRepeticiones, PlanEntrenamiento planEntrenamiento) {
         this.nombre = nombre;
         this.descripcion = descripcion;
+        this.cantRepeticiones = cantRepeticiones;
         this.planEntrenamiento = planEntrenamiento;
     }
 
-    public int getId() {
-        return id;
+    public int getCantRepeticiones() {
+        return cantRepeticiones;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCantRepeticiones(int cantRepeticiones) {
+        this.cantRepeticiones = cantRepeticiones;
+    }
+
+    public int getId_ejercicio() {
+        return id_ejercicio;
+    }
+
+    public void setId_ejercicio(int id_ejercicio) {
+        this.id_ejercicio = id_ejercicio;
     }
 
     public String getNombre() {

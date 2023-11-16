@@ -16,8 +16,6 @@ public class PlanEntrenamiento {
     @Column(name = "id")
     private int id;
 */
-    @Column(name = "cant_repeticiones")
-    private int cantRepeticiones;
 
     @Column(name = "dia_semana")
     private int diaSemana;
@@ -31,7 +29,7 @@ public class PlanEntrenamiento {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_plan")
-    private int idPlan;
+    private int id_plan;
 
     //POR AHORA DEJO LOS METODOS DE ESTA CLASE COMO PRIVATE!!!!
     private void agregarNuevoEjercicio(){
@@ -46,19 +44,10 @@ public class PlanEntrenamiento {
     }
 
     //EL IDPLAN NO VA EN ESTE CONSTRUCTOR? COMO PASA EN CLIENTE
-    public PlanEntrenamiento(int cantRepeticiones, int diaSemana, int idPlan) {
-        this.cantRepeticiones = cantRepeticiones;
+    public PlanEntrenamiento(int diaSemana, int id_plan) {
         this.diaSemana = diaSemana;
         //this.ejercicio = ejercicio;
-        this.idPlan = idPlan;
-    }
-
-    public int getCantRepeticiones() {
-        return cantRepeticiones;
-    }
-
-    public void setCantRepeticiones(int cantRepeticiones) {
-        this.cantRepeticiones = cantRepeticiones;
+        this.id_plan = id_plan;
     }
 
     public int getDiaSemana() {
@@ -77,11 +66,11 @@ public class PlanEntrenamiento {
         this.ejercicio = ejercicio;
     }
 */
-    public int getIdPlan() {
-        return idPlan;
+    public int getId_plan() {
+        return id_plan;
     }
 
-    public void setIdPlan(int idPlan) {
-        this.idPlan = idPlan;
+    public void setId_plan(int id_plan) {
+        this.id_plan = id_plan;
     }
 }

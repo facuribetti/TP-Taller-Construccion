@@ -7,7 +7,7 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private int id_cliente;
 
     @Column(name = "apellido")
     private String apellido;
@@ -22,8 +22,8 @@ public class Cliente {
     @Column(name = "nombre")
     private String nombre;
 
-    @Column(name = "password")
-    private String password;
+    @Column(name = "contrasenia")
+    private String contrasenia;
 
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "plan_entrenamiento_id")
@@ -33,21 +33,21 @@ public class Cliente {
     //private List<PlanDeEntrenamiento> planesDeEntrenamiento;
     public Cliente(){}
 
-    public Cliente(String apellido, long dni, String email, String nombre, String password) {
+    public Cliente(String apellido, long dni, String email, String nombre, String contrasenia) {
         //El id no va en el constructor porque sino explota todo
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
         this.nombre = nombre;
-        this.password = password;
+        this.contrasenia = contrasenia;
     }
 
-    public int getId() {
-        return id;
+    public int getId_cliente() {
+        return id_cliente;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setId_cliente(int id_cliente) {
+        this.id_cliente = id_cliente;
     }
 
     public String getApellido() {
@@ -82,23 +82,23 @@ public class Cliente {
         this.nombre = nombre;
     }
 
-    public String getPassword() {
-        return password;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
     }
 
     @Override
     public String toString() {
         return "Cliente{" +
-                "id=" + id +
+                "id=" + id_cliente +
                 ", apellido='" + apellido + '\'' +
                 ", dni=" + dni +
                 ", email='" + email + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", password='" + password + '\'' +
+                ", password='" + contrasenia + '\'' +
                 '}';
     }
 }
