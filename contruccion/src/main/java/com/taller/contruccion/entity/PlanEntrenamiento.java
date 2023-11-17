@@ -20,22 +20,10 @@ public class PlanEntrenamiento {
     @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ejercicio> listaEjercicios;
 
-    //POR AHORA DEJO LOS METODOS DE ESTA CLASE COMO PRIVATE!!!!
-    private void agregarNuevoEjercicio(){
-    }
+    public PlanEntrenamiento(){}
 
-    private void eliminarEjercicio(){
-    }
-
-    //ESTE RETORNA NULL POR AHORA!!!
-    private String mostrarPlan(){
-        return null;
-    }
-
-    //EL IDPLAN NO VA EN ESTE CONSTRUCTOR? COMO PASA EN CLIENTE
-    public PlanEntrenamiento(int diaSemana, int id_plan) {
+    public PlanEntrenamiento(int diaSemana) {
         this.diaSemana = diaSemana;
-        this.id_plan = id_plan;
     }
 
     public int getDiaSemana() {
@@ -45,20 +33,21 @@ public class PlanEntrenamiento {
     public void setDiaSemana(int diaSemana) {
         this.diaSemana = diaSemana;
     }
-/*
-    public Ejercicio getEjercicio() {
-        return ejercicio;
-    }
 
-    public void setEjercicio(Ejercicio ejercicio) {
-        this.ejercicio = ejercicio;
-    }
-*/
     public int getId_plan() {
         return id_plan;
     }
 
     public void setId_plan(int id_plan) {
         this.id_plan = id_plan;
+    }
+
+    @Override
+    public String toString() {
+        return "PlanEntrenamiento{" +
+                "id_plan=" + id_plan +
+                ", diaSemana=" + diaSemana +
+                ", listaEjercicios=" + listaEjercicios +
+                '}';
     }
 }

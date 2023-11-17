@@ -19,7 +19,7 @@ public class ClienteController {
     public String obtenerClientePorId(@PathVariable int id, Model model) {
 
         Cliente cliente = clienteService.encontrarPorId(id);
-        System.out.println(cliente);
+        System.out.println(cliente.getPlanEntrenamiento());
 
         model.addAttribute("cliente", cliente);
         //return clienteService.encontrarPorId(id);

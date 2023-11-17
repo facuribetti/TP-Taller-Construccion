@@ -90,6 +90,14 @@ public class Cliente {
         this.contrasenia = contrasenia;
     }
 
+    public PlanEntrenamiento getPlanEntrenamiento() {
+        return planEntrenamiento;
+    }
+
+    public void setPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
+        this.planEntrenamiento = planEntrenamiento;
+    }
+
     @Override
     public String toString() {
         return "Cliente{" +

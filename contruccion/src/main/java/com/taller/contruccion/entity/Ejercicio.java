@@ -26,11 +26,10 @@ public class Ejercicio {
 
     public Ejercicio() {}
 
-    public Ejercicio(String nombre, String descripcion, int cantRepeticiones, PlanEntrenamiento planEntrenamiento) {
+    public Ejercicio(String nombre, String descripcion, int cantRepeticiones) {
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.cantRepeticiones = cantRepeticiones;
-        this.planEntrenamiento = planEntrenamiento;
     }
 
     public int getCantRepeticiones() {
