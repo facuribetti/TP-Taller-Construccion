@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nuevo Ejercicio</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/styles.css}" />
+</head>
+<body>
+<h2>Nuevo Ejercicio</h2>
+
+<form th:action="@{/ejercicio/crearEjercicio}" th:object="${ejercicio}" method="post">
+    <label>Nombre:</label>
+    <input type="text" th:field="*{nombre}" />
+
+    <label>Descripción:</label>
+    <input type="text" th:field="*{descripcion}" />
+
+    <label>Cantidad de Repeticiones:</label>
+    <input type="number" th:field="*{cantRepeticiones}" />
+
+    <input type="submit" value="Guardar" />
+</form>
+</body>
+</html>

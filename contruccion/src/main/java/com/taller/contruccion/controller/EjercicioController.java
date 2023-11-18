@@ -1,39 +1,48 @@
 package com.taller.contruccion.controller;
 
-import com.taller.contruccion.entity.Cliente;
+import com.taller.contruccion.entity.Ejercicio;
+import com.taller.contruccion.entity.PlanEntrenamiento;
 import com.taller.contruccion.service.EjercicioService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping
+@RequestMapping("/ejercicio")
 public class EjercicioController {
 
-        private EjercicioService ejercicioService;
-/*
-        public EjercicioController(EjercicioService serviceEjercicio) {ejercicioService = serviceEjercicio;}
+    private EjercicioService ejercicioService;
 
-       @GetMapping("/{id}")
-        public String obtenerClientePorId(@PathVariable int id, Model model) {
-
-            Cliente cliente = clienteService.encontrarPorId(id);
-            System.out.println(cliente);
-
-            model.addAttribute("cliente", cliente);
-            //return clienteService.encontrarPorId(id);
-
-            return "cliente/show-client";
-        }
-
-        @PostMapping("/crearCliente")
-
-
-        public String crearCliente(@ModelAttribute("cliente") Cliente cliente) {
-            clienteService.crearCliente(cliente);
-
-            return "redirect:/Cliente" + cliente.getId();
-        }
-*/
+    public EjercicioController(EjercicioService serviceEjercicio) {
+        ejercicioService = serviceEjercicio;
     }
 
+    @GetMapping("/{id}")
+    public String obtenerEjercicioPorId(@PathVariable int id, Model model) {
+
+        Ejercicio ejercicio = ejercicioService.encontrarPorId(id);
+        System.out.println(ejercicio);
+
+        model.addAttribute("ejercicio", ejercicio);
+        //return clienteService.encontrarPorId(id);
+
+        return "ejercicio/ejercicio/" + ejercicio.getId_ejercicio();
+    }
+
+    @PostMapping("/crearEjercicio")
+    public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio) {
+        ejercicioService.crearEjercicio(ejercicio);
+
+        return "redirect:/ejercicio/" + ejercicio.getId_ejercicio();
+    }
+/*
+    @GetMapping("/nuevoEjercicio")
+    public String redireccionarANuevoEjercicio(Model model, PlanEntrenamiento planEntrenamiento) {
+        Ejercicio ejercicio = new Ejercicio();
+        PlanEntrenamiento planEntrenamiento = ejercicioService.encontrarPlanEntrenamiento(ejercicio);
+        model.addAttribute("ejercicio", ejercicio);
+        return "/ejercicio/nuevo-ejercicio";
+    }
+ */
+
+}

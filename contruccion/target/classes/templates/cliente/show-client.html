@@ -1,36 +1,44 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cliente</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/showClientStyle.css}" />
 </head>
 <body>
-<h2>Cliente</h2>
+<h2>Cliente </h2>
 
-<table border="1">
-    <thead>
-    <tr>
-        <th>ID</th>
-        <th>Apellido</th>
-        <th>DNI</th>
-        <th>Email</th>
-        <th>Nombre</th>
+<p>Apellido: <span th:text="${cliente.apellido}"></span></p>
+<p>DNI: <span th:text="${cliente.dni}"></span></p>
+<p>Email: <span th:text="${cliente.email}"></span></p>
+<p>Nombre: <span th:text="${cliente.nombre}"></span></p>
+<p>Contraseña: <span th:text="${cliente.contrasenia}"></span></p>
 
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td th:text="${cliente.id_cliente}"></td>
-        <td th:text="${cliente.apellido}"></td>
-        <td th:text="${cliente.dni}"></td>
-        <td th:text="${cliente.email}"></td>
-        <td th:text="${cliente.nombre}"></td>
-        <td th:text="${cliente.nombre}"></td>
+<h3>Plan de Entrenamiento</h3>
+<p>Día de la Semana: <span th:text="${planEntrenamiento.diaSemana}"></span></p>
 
-
-    </tr>
-    </tbody>
-
-</table>
+<h4>Ejercicios</h4>
+<ul>
+    <li th:each="ejercicio : ${ejercicios}">
+        <p>Nombre: <span th:text="${ejercicio.nombre}"></span></p>
+        <p>Descripción: <span th:text="${ejercicio.descripcion}"></span></p>
+        <p>Cantidad de Repeticiones: <span th:text="${ejercicio.cantRepeticiones}"></span></p>
+    </li>
+</ul>
+<form action="/ejercicio/crearEjercicio" method="post">
+    <h4>Add New Ejercicio</h4>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+    <br>
+    <label for="descripcion">Descripción:</label>
+    <input type="text" id="descripcion" name="descripcion" required>
+    <br>
+    <label for="cantRepeticiones">Cantidad de Repeticiones:</label>
+    <input type="number" id="cantRepeticiones" name="cantRepeticiones" required>
+    <br>
+    <button type="submit">Agregar ejercicio</button>
+</form>
+<a th:href="@{/ejercicio/nuevoEjercicio}"> Nuevo ejercicio </a>
 </body>
 </html>

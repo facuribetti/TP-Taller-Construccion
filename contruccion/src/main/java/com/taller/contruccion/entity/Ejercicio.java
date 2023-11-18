@@ -23,7 +23,6 @@ public class Ejercicio {
     @JoinColumn(name = "id_plan")
     private PlanEntrenamiento planEntrenamiento;
 
-
     public Ejercicio() {}
 
     public Ejercicio(String nombre, String descripcion, int cantRepeticiones) {
@@ -70,5 +69,14 @@ public class Ejercicio {
 
     public void setPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
         this.planEntrenamiento = planEntrenamiento;
+    }
+
+    @Override
+    public String toString() {
+        return "Ejercicio{" +
+                "id_ejercicio=" + id_ejercicio +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", cantRepeticiones=" + cantRepeticiones;
     }
 }
