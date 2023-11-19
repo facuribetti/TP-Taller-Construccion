@@ -27,7 +27,11 @@
     </li>
 </ul>
 <form action="/ejercicio/crearEjercicio" method="post">
-    <h4>Add New Ejercicio</h4>
+    <!-- Hidden inputs para unir el ejercicio al cliente en el controlador y servicio -->
+    <input type="hidden" name="id_cliente" th:value="${cliente.id_cliente}">
+
+    <!-- Inputs para agregar un nuevo ejercicio -->
+    <h4>Agregar nuevo ejercicio</h4>
     <label for="nombre">Nombre:</label>
     <input type="text" id="nombre" name="nombre" required>
     <br>
@@ -39,6 +43,7 @@
     <br>
     <button type="submit">Agregar ejercicio</button>
 </form>
-<a th:href="@{/ejercicio/nuevoEjercicio}"> Nuevo ejercicio </a>
+<!--  <a th:href="@{/ejercicio/nuevoEjercicio}"> Nuevo ejercicio </a>  -->
+
 </body>
 </html>

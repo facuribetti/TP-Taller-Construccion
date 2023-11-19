@@ -1,6 +1,7 @@
 package com.taller.contruccion.service;
 
 import com.taller.contruccion.dao.DaoPlanEntrenamiento;
+import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.PlanEntrenamiento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,22 +11,32 @@ import java.util.Optional;
 @Service
 public class PlanEntrenamientoService {
 
-        private DaoPlanEntrenamiento daoPlanEntrenamiento;
+    private DaoPlanEntrenamiento daoPlanEntrenamiento;
 
-        @Autowired
-        public PlanEntrenamientoService(DaoPlanEntrenamiento planEntrenamientoDAO) {
-                daoPlanEntrenamiento = planEntrenamientoDAO;}
+    @Autowired
+    public PlanEntrenamientoService(DaoPlanEntrenamiento planEntrenamientoDAO) {
+        daoPlanEntrenamiento = planEntrenamientoDAO;
+    }
 
 
-        public PlanEntrenamiento encontrarPorId(int id){
-                Optional<PlanEntrenamiento> resultado = daoPlanEntrenamiento.findById(id);
+    public PlanEntrenamiento encontrarPorId(int id) {
+        Optional<PlanEntrenamiento> resultado = daoPlanEntrenamiento.findById(id);
 
-                if (resultado.isPresent()) {
-                        return resultado.get();
-                } else return null;
-        }
+        if (resultado.isPresent()) {
+            return resultado.get();
+        } else return null;
+    }
+/*
+    public PlanEntrenamiento encontrarPorCliente(Cliente cliente) {
+        Optional<PlanEntrenamiento> resultado = Optional.ofNullable(daoPlanEntrenamiento.findByCliente(cliente));
+        if (resultado.isPresent())
+            return resultado.get();
+        else return null;
+    }
 
-        public void crearPlanEntrenamiento(PlanEntrenamiento planEntrenamiento){
-                daoPlanEntrenamiento.save(planEntrenamiento);
-        }
+ */
+
+    public void crearPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
+        daoPlanEntrenamiento.save(planEntrenamiento);
+    }
 }

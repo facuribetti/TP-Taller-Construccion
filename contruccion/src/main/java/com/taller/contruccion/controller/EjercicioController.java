@@ -1,8 +1,11 @@
 package com.taller.contruccion.controller;
 
+import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.Ejercicio;
 import com.taller.contruccion.entity.PlanEntrenamiento;
+import com.taller.contruccion.service.ClienteService;
 import com.taller.contruccion.service.EjercicioService;
+import com.taller.contruccion.service.PlanEntrenamientoService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -12,9 +15,15 @@ import org.springframework.web.bind.annotation.*;
 public class EjercicioController {
 
     private EjercicioService ejercicioService;
+    private ClienteService clienteService;
+    private PlanEntrenamientoService planEntrenamientoService;
 
-    public EjercicioController(EjercicioService serviceEjercicio) {
+    public EjercicioController(EjercicioService serviceEjercicio,
+                               ClienteService serviceCliente,
+                               PlanEntrenamientoService servicePlan) {
         ejercicioService = serviceEjercicio;
+        clienteService = serviceCliente;
+        planEntrenamientoService = servicePlan;
     }
 
     @GetMapping("/{id}")
@@ -30,10 +39,16 @@ public class EjercicioController {
     }
 
     @PostMapping("/crearEjercicio")
-    public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio) {
-        ejercicioService.crearEjercicio(ejercicio);
+    public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio, Cliente cliente, Model model) {
+        System.out.println(ejercicio);
+        System.out.println(clienteService.encontrarPorId(cliente.getId_cliente()));
+        System.out.println("plan de entrenamiento: " + clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
+        model.addAttribute("cliente", cliente);
+        //PlanEntrenamiento planEntrenamiento = planEntrenamientoService.encontrarPorCliente(cliente);
+        //System.out.println(planEntrenamiento);
+        ejercicioService.crearEjercicio(ejercicio, cliente, clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
 
-        return "redirect:/ejercicio/" + ejercicio.getId_ejercicio();
+        return "redirect:/Cliente/" + cliente.getId_cliente();
     }
 /*
     @GetMapping("/nuevoEjercicio")

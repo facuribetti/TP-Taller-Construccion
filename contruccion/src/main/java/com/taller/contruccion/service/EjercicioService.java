@@ -2,6 +2,7 @@ package com.taller.contruccion.service;
 
 import com.taller.contruccion.dao.DaoEjercicio;
 import com.taller.contruccion.dao.DaoPlanEntrenamiento;
+import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.Ejercicio;
 import com.taller.contruccion.entity.PlanEntrenamiento;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,10 +45,13 @@ public class EjercicioService {
     }
 
 
-    public void crearEjercicio(Ejercicio ejercicio) {
+    public void crearEjercicio(Ejercicio ejercicio, Cliente cliente, PlanEntrenamiento planEntrenamiento) {
         //Optional<PlanEntrenamiento> planEntrenamiento = daoPlanEntrenamiento.findById(ejercicio.getPlanEntrenamiento().getId_plan());
         //if (planEntrenamiento.isPresent()) {
             //ejercicio.setPlanEntrenamiento(planEntrenamiento.get());
+            System.out.println("crearEjercicio");
+            System.out.println(cliente);
+            ejercicio.setPlanEntrenamiento(planEntrenamiento);
             daoEjercicio.save(ejercicio);
         //}
     }

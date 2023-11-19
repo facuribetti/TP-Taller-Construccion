@@ -31,6 +31,7 @@ public class ClienteController {
         PlanEntrenamiento planEntrenamiento = cliente.getPlanEntrenamiento();
         List<Ejercicio> ejercicios = ejercicioService.encontrarPorPlanEntrenamiento(planEntrenamiento);
         //System.out.println(cliente.getPlanEntrenamiento());
+        System.out.println(cliente);
         System.out.println(ejercicios);
 
         model.addAttribute("cliente", cliente);

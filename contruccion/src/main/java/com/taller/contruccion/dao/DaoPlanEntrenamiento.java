@@ -1,5 +1,6 @@
 package com.taller.contruccion.dao;
 
+import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.PlanEntrenamiento;
 import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
@@ -11,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DaoPlanEntrenamiento extends JpaRepository<PlanEntrenamiento, Integer>{
 
-
+    //public PlanEntrenamiento findByCliente (Cliente cliente);
 
 }
