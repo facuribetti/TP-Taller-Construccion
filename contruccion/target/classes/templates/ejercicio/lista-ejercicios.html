@@ -4,28 +4,18 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cliente</title>
+    <title>Lista de ejercicios</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
             padding: 20px;
+            background-color: #f8f8f8;
         }
 
         h2 {
             color: #333;
-        }
-
-        h3 {
-            color: #555;
-        }
-
-        h4 {
-            color: #777;
-        }
-
-        p {
-            margin: 5px 0;
+            text-align: center;
         }
 
         ul {
@@ -34,11 +24,31 @@
         }
 
         li {
+            background-color: #fff;
             border: 1px solid #ddd;
-            padding: 10px;
             margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
         }
 
+        p {
+            margin: 0;
+        }
+
+        a {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0056b3;
+        }
         form {
             margin-top: 20px;
         }
@@ -51,20 +61,14 @@
         input, button {
             margin-bottom: 10px;
         }
+
     </style>
 </head>
 <body>
-<h2>Cliente </h2>
+<h2>Lista de ejercicios del dia <span th:text="${planEntrenamiento.diaSemana}"></span> del cliente <span
+        th:text="${cliente.nombre}"></span> <span
+        th:text="${cliente.apellido}"></span></h2>
 
-<p>Apellido: <span th:text="${cliente.apellido}"></span></p>
-<p>DNI: <span th:text="${cliente.dni}"></span></p>
-<p>Email: <span th:text="${cliente.email}"></span></p>
-<p>Nombre: <span th:text="${cliente.nombre}"></span></p>
-
-<h3>Plan de Entrenamiento</h3>
-<p>Día de la Semana: <span th:text="${planEntrenamiento.diaSemana}"></span></p>
-
-<a  th:href="@{/ejercicio/listaEjercicios/{id}(id=${cliente.id_cliente})}"><h4>Ejercicios</h4></a>
 <ul>
     <li th:each="ejercicio : ${ejercicios}">
         <p>Nombre: <span th:text="${ejercicio.nombre}"></span></p>
@@ -89,5 +93,7 @@
     <br>
     <button type="submit">Agregar ejercicio</button>
 </form>
+
+<a th:href="@{/Cliente/{id}(id=${cliente.id_cliente})}">Ir a página del cliente</a>
 </body>
 </html>

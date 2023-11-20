@@ -38,6 +38,20 @@ public class EjercicioController {
         return "ejercicio/ejercicio/" + ejercicio.getId_ejercicio();
     }
 
+    @GetMapping("/listaEjercicios/{id}")
+    public String obtenerListaEjercicios(@PathVariable String id, Model model){
+
+        Cliente cliente1 = clienteService.encontrarPorId(Integer.parseInt(id));
+        PlanEntrenamiento planEntrenamiento = planEntrenamientoService.encontrarPorId(Integer.parseInt(id));
+        //System.out.println(cliente1);
+
+        model.addAttribute("cliente", cliente1);
+        model.addAttribute("planEntrenamiento", planEntrenamiento);
+        model.addAttribute("ejercicios", ejercicioService.encontrarPorPlanEntrenamiento(planEntrenamiento));
+
+        return "ejercicio/lista-ejercicios";
+    }
+
     @PostMapping("/crearEjercicio")
     public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio, Cliente cliente, Model model) {
         System.out.println(ejercicio);

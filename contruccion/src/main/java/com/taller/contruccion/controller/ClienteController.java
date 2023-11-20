@@ -1,6 +1,5 @@
 package com.taller.contruccion.controller;
 
-
 import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.Ejercicio;
 import com.taller.contruccion.entity.PlanEntrenamiento;
@@ -47,16 +46,24 @@ public class ClienteController {
         Cliente cliente = new Cliente();
 
         model.addAttribute(cliente);
-        return "cliente/nuevo-cliente";
-
+        return "redirect:/Cliente/guardarCliente";
     }
 
     @PostMapping("/guardarCliente")
     public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
         System.out.println(cliente);
+        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento(1);
+        cliente.setPlanEntrenamiento(planEntrenamiento);
         clienteService.crearCliente(cliente);
 
         return "redirect:/Cliente/" + cliente.getId_cliente();
+    }
+
+    @GetMapping("/nuevoCliente")
+    public String nuevoCliente(Model model) {
+        Cliente cliente = new Cliente();
+        model.addAttribute("cliente", cliente);
+        return "/cliente/nuevo-cliente";
     }
 
 }
