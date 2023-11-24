@@ -28,7 +28,7 @@ public class ClienteController {
 
         Cliente cliente = clienteService.encontrarPorId(id);
         PlanEntrenamiento planEntrenamiento = cliente.getPlanEntrenamiento();
-        List<Ejercicio> ejercicios = ejercicioService.encontrarPorPlanEntrenamiento(planEntrenamiento);
+        List<Ejercicio> ejercicios = ejercicioService.encontrarEjerciciosPorPlanEntrenamiento(planEntrenamiento);
 
         model.addAttribute("cliente", cliente);
         model.addAttribute("planEntrenamiento", planEntrenamiento);

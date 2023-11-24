@@ -37,7 +37,7 @@ public class EjercicioService {
         } else return null;
     }
 
-    public List<Ejercicio> encontrarPorPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
+    public List<Ejercicio> encontrarEjerciciosPorPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
         Optional<List<Ejercicio>> resultado = Optional.ofNullable(daoEjercicio.findByPlanEntrenamiento(planEntrenamiento));
         if (resultado.isPresent()) {
             return resultado.get();

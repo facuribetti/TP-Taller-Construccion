@@ -61,8 +61,7 @@
 <p>Email: <span th:text="${cliente.email}"></span></p>
 <p>Nombre: <span th:text="${cliente.nombre}"></span></p>
 
-<h3>Plan de Entrenamiento</h3>
-<a  th:href="@{/ejercicio/listaEjercicios/{id}(id=${cliente.id_cliente})}"><h4>Ejercicios</h4></a>
+<a  th:href="@{/planEntrenamiento/{id}(id=${cliente.id_cliente})}"><h4>Ejercicios</h4></a>
 <ul>
     <li th:each="ejercicio : ${ejercicios}">
         <p>Nombre: <span th:text="${ejercicio.nombre}"></span></p>
