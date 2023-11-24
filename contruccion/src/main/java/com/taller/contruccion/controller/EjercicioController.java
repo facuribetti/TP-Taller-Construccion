@@ -30,7 +30,6 @@ public class EjercicioController {
     public String obtenerEjercicioPorId(@PathVariable int id, Model model) {
 
         Ejercicio ejercicio = ejercicioService.encontrarPorId(id);
-        System.out.println(ejercicio);
 
         model.addAttribute("ejercicio", ejercicio);
         //return clienteService.encontrarPorId(id);
@@ -43,7 +42,6 @@ public class EjercicioController {
 
         Cliente cliente1 = clienteService.encontrarPorId(Integer.parseInt(id));
         PlanEntrenamiento planEntrenamiento = planEntrenamientoService.encontrarPorId(Integer.parseInt(id));
-        //System.out.println(cliente1);
 
         model.addAttribute("cliente", cliente1);
         model.addAttribute("planEntrenamiento", planEntrenamiento);
@@ -54,12 +52,7 @@ public class EjercicioController {
 
     @PostMapping("/crearEjercicio")
     public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio, Cliente cliente, Model model) {
-        System.out.println(ejercicio);
-        System.out.println(clienteService.encontrarPorId(cliente.getId_cliente()));
-        System.out.println("plan de entrenamiento: " + clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
         model.addAttribute("cliente", cliente);
-        //PlanEntrenamiento planEntrenamiento = planEntrenamientoService.encontrarPorCliente(cliente);
-        //System.out.println(planEntrenamiento);
         ejercicioService.crearEjercicio(ejercicio, cliente, clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
 
         return "redirect:/Cliente/" + cliente.getId_cliente();

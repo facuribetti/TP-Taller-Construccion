@@ -29,9 +29,6 @@ public class ClienteController {
         Cliente cliente = clienteService.encontrarPorId(id);
         PlanEntrenamiento planEntrenamiento = cliente.getPlanEntrenamiento();
         List<Ejercicio> ejercicios = ejercicioService.encontrarPorPlanEntrenamiento(planEntrenamiento);
-        //System.out.println(cliente.getPlanEntrenamiento());
-        System.out.println(cliente);
-        System.out.println(ejercicios);
 
         model.addAttribute("cliente", cliente);
         model.addAttribute("planEntrenamiento", planEntrenamiento);
@@ -51,8 +48,7 @@ public class ClienteController {
 
     @PostMapping("/guardarCliente")
     public String guardarCliente(@ModelAttribute("cliente") Cliente cliente) {
-        System.out.println(cliente);
-        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento(1);
+        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento();
         cliente.setPlanEntrenamiento(planEntrenamiento);
         clienteService.crearCliente(cliente);
 

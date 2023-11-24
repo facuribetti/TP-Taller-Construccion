@@ -18,7 +18,6 @@ public class PlanEntrenamientoService {
         daoPlanEntrenamiento = planEntrenamientoDAO;
     }
 
-
     public PlanEntrenamiento encontrarPorId(int id) {
         Optional<PlanEntrenamiento> resultado = daoPlanEntrenamiento.findById(id);
 
@@ -26,17 +25,9 @@ public class PlanEntrenamientoService {
             return resultado.get();
         } else return null;
     }
-/*
-    public PlanEntrenamiento encontrarPorCliente(Cliente cliente) {
-        Optional<PlanEntrenamiento> resultado = Optional.ofNullable(daoPlanEntrenamiento.findByCliente(cliente));
-        if (resultado.isPresent())
-            return resultado.get();
-        else return null;
-    }
-
- */
 
     public void crearPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
         daoPlanEntrenamiento.save(planEntrenamiento);
     }
+
 }

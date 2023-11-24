@@ -9,7 +9,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-
 import java.util.Optional;
 
 @SpringBootApplication
@@ -22,15 +21,14 @@ public class ContruccionApplication {
     @Bean
     CommandLineRunner commandLineRunner(ClienteService clienteService, EjercicioService ejercicioService) {
         return runner -> {
-            System.out.println("hello");
             cargarUnCliente(clienteService, ejercicioService);
         };
     }
 
     private void cargarUnCliente(ClienteService clienteService, EjercicioService ejercicioService) {
         Cliente cliente = new Cliente("arias",123,"user@user.com","alberto","123");   //creo una entity cliente
-        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento(1);                                        //creo una entity PlanEntrenamiento
-        Ejercicio ejercicio = new Ejercicio("a","a",1);                                  //creo una entity ejercicio
+        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento();                                        //creo una entity PlanEntrenamiento
+        Ejercicio ejercicio = new Ejercicio("piernas","corré",9999);                     //creo una entity ejercicio
         ejercicio.setPlanEntrenamiento(planEntrenamiento);                                                              //le seteo el plan de entrenamiento al ejercicio
         cliente.setPlanEntrenamiento(planEntrenamiento);                                                                //LE SETEO EL PLAN AL CLIENTE
         Optional<Cliente> optionalCliente = Optional.ofNullable(clienteService.encontrarPorId(1));
