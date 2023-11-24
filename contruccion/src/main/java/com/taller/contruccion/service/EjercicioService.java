@@ -15,26 +15,10 @@ import java.util.Optional;
 public class EjercicioService {
 
     private DaoEjercicio daoEjercicio;
-    private DaoPlanEntrenamiento daoPlanEntrenamiento;
 
     @Autowired
-    public EjercicioService(DaoEjercicio ejercicioDao, DaoPlanEntrenamiento planEntrenamientoDao) {
+    public EjercicioService(DaoEjercicio ejercicioDao) {
         daoEjercicio = ejercicioDao;
-        daoPlanEntrenamiento = planEntrenamientoDao;
-    }
-
-    public Ejercicio encontrarPorId(int id) {
-        Optional<Ejercicio> resultado = daoEjercicio.findById(id);
-        if (resultado.isPresent()) {
-            return resultado.get();
-        } else return null;
-    }
-
-    public PlanEntrenamiento encontrarPlanEntrenamiento (Ejercicio ejercicio) {
-        Optional<PlanEntrenamiento> planEntrenamiento = daoPlanEntrenamiento.findById(ejercicio.getPlanEntrenamiento().getId_plan());
-        if (planEntrenamiento.isPresent()){
-            return planEntrenamiento.get();
-        } else return null;
     }
 
     public List<Ejercicio> encontrarEjerciciosPorPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
@@ -44,10 +28,8 @@ public class EjercicioService {
         } else return null;
     }
 
-
     public void crearEjercicio(Ejercicio ejercicio, PlanEntrenamiento planEntrenamiento) {
             ejercicio.setPlanEntrenamiento(planEntrenamiento);
             daoEjercicio.save(ejercicio);
     }
-
 }

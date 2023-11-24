@@ -9,36 +9,32 @@ public class Cliente {
     @Column(name = "id_cliente")
     private int id_cliente;
 
+    @Column(name = "nombre")
+    private String nombre;
+
     @Column(name = "apellido")
     private String apellido;
 
-    //PORQUE ESTE NO ES UNIQUE TAMBIEN? A QUE SE REFIERE CON UNIQUE?
     @Column(name = "dni")
     private long dni;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "nombre")
-    private String nombre;
-
     @Column(name = "contrasenia")
     private String contrasenia;
 
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_plan")
     private PlanEntrenamiento planEntrenamiento;
 
-    //@OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
-    //private List<PlanDeEntrenamiento> planesDeEntrenamiento;
     public Cliente(){}
 
-    public Cliente(String apellido, long dni, String email, String nombre, String contrasenia) {
-        //El id no va en el constructor porque sino explota todo
+    public Cliente(String nombre, String apellido, long dni, String email, String contrasenia) {
+        this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
         this.email = email;
-        this.nombre = nombre;
         this.contrasenia = contrasenia;
     }
 

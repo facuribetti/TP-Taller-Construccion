@@ -14,7 +14,7 @@ public class PlanEntrenamiento {
     @Column(name = "id_plan")
     private int id_plan;
 
-    @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "planEntrenamiento", cascade = CascadeType.ALL)
     private List<Ejercicio> listaEjercicios;
 
     public PlanEntrenamiento(){}

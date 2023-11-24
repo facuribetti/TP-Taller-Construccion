@@ -9,6 +9,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+
 import java.util.Optional;
 
 @SpringBootApplication
@@ -26,17 +27,20 @@ public class ContruccionApplication {
     }
 
     private void cargarUnCliente(ClienteService clienteService, EjercicioService ejercicioService) {
-        Cliente cliente = new Cliente("perez",123,"user@user.com","juan","123");   //creo una entity cliente
-        PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento();                                        //creo una entity PlanEntrenamiento
-        Ejercicio ejercicio = new Ejercicio("piernas","corré",9999);                     //creo una entity ejercicio
-        ejercicio.setPlanEntrenamiento(planEntrenamiento);                                                              //le seteo el plan de entrenamiento al ejercicio
-        cliente.setPlanEntrenamiento(planEntrenamiento);                                                                //LE SETEO EL PLAN AL CLIENTE
+        //Se verifica que el cliente no exista en la base de datso antes de intentar guardarlo, asi no da error
         Optional<Cliente> optionalCliente = Optional.ofNullable(clienteService.encontrarPorId(1));
-        if(optionalCliente.isEmpty())
+        if (optionalCliente.isEmpty()) {
+            //se crean los objetos java necesarios para cargar un cliente por defecto  y poder mostrar sus datos al iniciar
+            Cliente cliente = new Cliente("juan", "perez", 12345678, "user@user.com", "123");
+            PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento();
+            Ejercicio ejercicio = new Ejercicio("piernas", "corré", 9999);
+            //se setea el plan de entrenamiento al ejercicio
+            ejercicio.setPlanEntrenamiento(planEntrenamiento);
+            //se setea el plan de entrenamiento al cliente
+            cliente.setPlanEntrenamiento(planEntrenamiento);
+            //Se persisten los datos del cliente, plan de entrenamiento(mediante un cascading al estar setteado en cliente) y ejercicio en la base de datos
             clienteService.crearCliente(cliente);
-        Optional<Ejercicio> optionalEjercicio = Optional.ofNullable(ejercicioService.encontrarPorId(1));
-        if(optionalEjercicio.isEmpty())
-            ejercicioService.crearEjercicio(ejercicio, planEntrenamiento);                                     //guardo el ejercicio que ya tiene seteado un plan de
-                                                                                                                        // entrenamiento que está unido a un cliente
+            ejercicioService.crearEjercicio(ejercicio, planEntrenamiento);
+        }
     }
 }

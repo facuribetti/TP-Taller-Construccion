@@ -1,7 +1,6 @@
 package com.taller.contruccion.service;
 
 import com.taller.contruccion.dao.DaoPlanEntrenamiento;
-import com.taller.contruccion.entity.Cliente;
 import com.taller.contruccion.entity.PlanEntrenamiento;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,9 +24,4 @@ public class PlanEntrenamientoService {
             return resultado.get();
         } else return null;
     }
-
-    public void crearPlanEntrenamiento(PlanEntrenamiento planEntrenamiento) {
-        daoPlanEntrenamiento.save(planEntrenamiento);
-    }
-
 }

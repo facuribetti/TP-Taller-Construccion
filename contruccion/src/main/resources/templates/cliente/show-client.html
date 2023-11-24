@@ -56,12 +56,12 @@
 <body>
 <h2>Cliente </h2>
 
+<p>Nombre: <span th:text="${cliente.nombre}"></span></p>
 <p>Apellido: <span th:text="${cliente.apellido}"></span></p>
 <p>DNI: <span th:text="${cliente.dni}"></span></p>
 <p>Email: <span th:text="${cliente.email}"></span></p>
-<p>Nombre: <span th:text="${cliente.nombre}"></span></p>
 
-<a  th:href="@{/planEntrenamiento/{id}(id=${cliente.id_cliente})}"><h4>Ejercicios</h4></a>
+<a  th:href="@{/planEntrenamiento/{id}(id=${cliente.id_cliente})}"><h4>Ejercicios: </h4></a>
 <ul>
     <li th:each="ejercicio : ${ejercicios}">
         <p>Nombre: <span th:text="${ejercicio.nombre}"></span></p>
@@ -69,22 +69,5 @@
         <p>Cantidad de Repeticiones: <span th:text="${ejercicio.cantRepeticiones}"></span></p>
     </li>
 </ul>
-<form action="/ejercicio/crearEjercicio" method="post">
-    <!-- Hidden inputs para unir el ejercicio al cliente en el controlador y servicio -->
-    <input type="hidden" name="id_cliente" th:value="${cliente.id_cliente}">
-
-    <!-- Inputs para agregar un nuevo ejercicio -->
-    <h4>Agregar nuevo ejercicio</h4>
-    <label for="nombre">Nombre:</label>
-    <input type="text" id="nombre" name="nombre" required>
-    <br>
-    <label for="descripcion">Descripción:</label>
-    <input type="text" id="descripcion" name="descripcion" required>
-    <br>
-    <label for="cantRepeticiones">Cantidad de Repeticiones:</label>
-    <input type="number" id="cantRepeticiones" name="cantRepeticiones" required>
-    <br>
-    <button type="submit">Agregar ejercicio</button>
-</form>
 </body>
 </html>

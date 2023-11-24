@@ -5,7 +5,6 @@ import com.taller.contruccion.entity.Ejercicio;
 import com.taller.contruccion.service.ClienteService;
 import com.taller.contruccion.service.EjercicioService;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -20,23 +19,14 @@ public class EjercicioController {
         ejercicioService = serviceEjercicio;
         clienteService = serviceCliente;
     }
-
-    @GetMapping("/{id}")
-    public String obtenerEjercicioPorId(@PathVariable int id, Model model) {
-
-        Ejercicio ejercicio = ejercicioService.encontrarPorId(id);
-
-        model.addAttribute("ejercicio", ejercicio);
-
-        return "ejercicio/ejercicio/" + ejercicio.getId_ejercicio();
-    }
-
+    //Recibe los datos del nuevo ejercicio creado, lo persiste y redirecciona al controlador que muestra los datos del
+    //plan de entrenamiento que contiene la lista de ejercicios y la vista web de la misma
     @PostMapping("/crearEjercicio")
-    public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio, Cliente cliente, Model model) {
-        model.addAttribute("cliente", cliente);
-        ejercicioService.crearEjercicio(ejercicio,clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
+    public String crearEjercicio(@ModelAttribute("ejercicio") Ejercicio ejercicio, Cliente cliente) {
 
-        return "redirect:/Cliente/" + cliente.getId_cliente();
+        ejercicioService.crearEjercicio(ejercicio, clienteService.encontrarPorId(cliente.getId_cliente()).getPlanEntrenamiento());
+
+        //Se redirecciona al controlador de planEntrenamiento para mostrar la lista de ejercicios del cliente
+        return "redirect:/planEntrenamiento/" + cliente.getId_cliente();
     }
-
 }
