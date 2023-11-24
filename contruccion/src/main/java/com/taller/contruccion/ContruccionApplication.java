@@ -26,7 +26,7 @@ public class ContruccionApplication {
     }
 
     private void cargarUnCliente(ClienteService clienteService, EjercicioService ejercicioService) {
-        Cliente cliente = new Cliente("arias",123,"user@user.com","alberto","123");   //creo una entity cliente
+        Cliente cliente = new Cliente("perez",123,"user@user.com","juan","123");   //creo una entity cliente
         PlanEntrenamiento planEntrenamiento = new PlanEntrenamiento();                                        //creo una entity PlanEntrenamiento
         Ejercicio ejercicio = new Ejercicio("piernas","corré",9999);                     //creo una entity ejercicio
         ejercicio.setPlanEntrenamiento(planEntrenamiento);                                                              //le seteo el plan de entrenamiento al ejercicio
@@ -36,7 +36,7 @@ public class ContruccionApplication {
             clienteService.crearCliente(cliente);
         Optional<Ejercicio> optionalEjercicio = Optional.ofNullable(ejercicioService.encontrarPorId(1));
         if(optionalEjercicio.isEmpty())
-            ejercicioService.crearEjercicio(ejercicio, cliente, planEntrenamiento);                                     //guardo el ejercicio que ya tiene seteado un plan de
+            ejercicioService.crearEjercicio(ejercicio, planEntrenamiento);                                     //guardo el ejercicio que ya tiene seteado un plan de
                                                                                                                         // entrenamiento que está unido a un cliente
     }
 }

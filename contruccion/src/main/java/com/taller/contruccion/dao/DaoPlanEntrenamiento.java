@@ -12,6 +12,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface DaoPlanEntrenamiento extends JpaRepository<PlanEntrenamiento, Integer>{
 
-    //public PlanEntrenamiento findByCliente (Cliente cliente);
-
 }

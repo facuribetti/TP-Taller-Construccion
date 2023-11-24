@@ -45,13 +45,9 @@ public class EjercicioService {
     }
 
 
-    public void crearEjercicio(Ejercicio ejercicio, Cliente cliente, PlanEntrenamiento planEntrenamiento) {
-        //Optional<PlanEntrenamiento> planEntrenamiento = daoPlanEntrenamiento.findById(ejercicio.getPlanEntrenamiento().getId_plan());
-        //if (planEntrenamiento.isPresent()) {
-            //ejercicio.setPlanEntrenamiento(planEntrenamiento.get());
+    public void crearEjercicio(Ejercicio ejercicio, PlanEntrenamiento planEntrenamiento) {
             ejercicio.setPlanEntrenamiento(planEntrenamiento);
             daoEjercicio.save(ejercicio);
-        //}
     }
 
 }

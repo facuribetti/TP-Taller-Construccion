@@ -33,7 +33,6 @@ public class ClienteController {
         model.addAttribute("cliente", cliente);
         model.addAttribute("planEntrenamiento", planEntrenamiento);
         model.addAttribute("ejercicios", ejercicios);
-        //return clienteService.encontrarPorId(id);
 
         return "cliente/show-client";
     }

@@ -34,10 +34,9 @@ public class PlanEntrenamientoController {
         Cliente cliente = clienteService.encontrarPorId(Integer.parseInt(id));
         PlanEntrenamiento planEntrenamiento = planEntrenamientoService.encontrarPorId(Integer.parseInt(id));
         List<Ejercicio> ejercicios = ejercicioService.encontrarEjerciciosPorPlanEntrenamiento(planEntrenamiento);
-        //Ejercicio ejercicio = ejercicioService.encontrarPorId(id);
+
         model.addAttribute("cliente", cliente);
         model.addAttribute("ejercicios", ejercicios);
-        //return clienteService.encontrarPorId(id);
 
         return "ejercicio/lista-ejercicios";
     }
